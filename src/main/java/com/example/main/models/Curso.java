@@ -2,15 +2,18 @@ package com.example.main.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import com.example.main.enums.Categoria;
 import com.example.main.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,6 +31,10 @@ public class Curso implements Serializable {
     private Date dataCriacao;
     @Column(name = "status", nullable = false)
     private Status status;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "curso")
+    private List<Turma> turmas;
 
     public Curso() {
     }
@@ -80,6 +87,14 @@ public class Curso implements Serializable {
         this.status = status;
     }
 
+    public List<Turma> getTurmas() {
+        return turmas;
+    }
+
+    public void addTurmas(Turma obj) {
+        turmas.add(obj);
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -110,7 +125,5 @@ public class Curso implements Serializable {
         return "Curso [codigoCurso=" + codigoCurso + ", nome=" + nome + ", categoria=" + categoria + ", dataCriacao="
                 + dataCriacao + ", status=" + status + "]";
     }
-
-    
 
 }
