@@ -11,6 +11,8 @@ public class Pessoa implements Serializable {
     private String endereco;
     private String telefone;
 
+    // ADICIONAR OneToOne de Aluno e Professor
+
     public Pessoa() {
     }
 
