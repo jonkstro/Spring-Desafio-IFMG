@@ -31,15 +31,6 @@ public class Pessoa implements Serializable {
     @Column(name = "telefone", length = 15, nullable = false)
     private String telefone;
 
-    // ADICIONAR OneToOne de Aluno e Professor
-    @JsonIgnore
-    @OneToOne(mappedBy = "pessoa")
-    private Aluno aluno;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "pessoa")
-    private Professor professor;
-
     public Pessoa() {
     }
 
@@ -99,22 +90,6 @@ public class Pessoa implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
     }
 
     @Override
