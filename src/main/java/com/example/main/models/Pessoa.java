@@ -3,15 +3,38 @@ package com.example.main.models;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_pessoas")
 public class Pessoa implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigoPessoa", length = 11, nullable = false)
     private Integer codigoPessoa;
+    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
+    @Column(name = "cpf", length = 11, nullable = false)
     private String cpf;
+    @Column(name = "datanascimento", nullable = false)
     private Date dataNascimento;
+    @Column(name = "endereco", length = 250, nullable = false)
     private String endereco;
+    @Column(name = "telefone", length = 15, nullable = false)
     private String telefone;
 
     // ADICIONAR OneToOne de Aluno e Professor
+    @JsonIgnore
+    @OneToOne(mappedBy = "pessoa")
+    private Aluno aluno;
 
     public Pessoa() {
     }
@@ -72,6 +95,14 @@ public class Pessoa implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
     @Override

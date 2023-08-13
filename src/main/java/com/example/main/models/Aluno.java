@@ -3,14 +3,35 @@ package com.example.main.models;
 import java.io.Serializable;
 import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_alunos")
 public class Aluno implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigoAluno", length = 11, nullable = false)
     private Integer codigoAluno;
+    @Column(name = "numeromatricula", length = 9, nullable = false)
     private String numeroMatricula;
+    @Column(name = "datamatricula", nullable = false)
     private Date dataMatricula;
+    @Column(name = "alunoespecial", nullable = false)
     private Boolean isEspecial;
     
-    // ADICIONAR ONETOONE DE PESSOA
+    @OneToOne
+    @JoinColumn(name = "codigoPessoa", nullable = false, referencedColumnName = "codigoPessoa")
+    private Pessoa pessoa;
     
+    
+
     public Aluno() {
     }
 
@@ -51,6 +72,14 @@ public class Aluno implements Serializable {
 
     public void setIsEspecial(Boolean isEspecial) {
         this.isEspecial = isEspecial;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override
