@@ -25,12 +25,10 @@ public class Professor implements Serializable {
     private Date dataContratacao;
     @Column(name = "dedicacaoexclusiva", nullable = false)
     private Boolean isDedicacaoExclusiva;
-    
-    @OneToOne
-    @JoinColumn(name = "codigoPessoa", nullable = false)
-    private Pessoa pessoa;
 
-    
+    @OneToOne
+    @JoinColumn(name = "fk_codigoPessoa", nullable = false)
+    private Pessoa pessoa;
 
     public Professor() {
     }
@@ -114,7 +112,4 @@ public class Professor implements Serializable {
                 + ", dataContratacao=" + dataContratacao + ", isDedicacaoExclusiva=" + isDedicacaoExclusiva + "]";
     }
 
-    
-
-    
 }

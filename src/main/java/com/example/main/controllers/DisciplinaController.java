@@ -14,32 +14,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.main.models.Professor;
-import com.example.main.services.ProfessorService;
+import com.example.main.models.Disciplina;
+import com.example.main.services.DisciplinaService;
 
 @RestController
-@RequestMapping(value = "/api/escola/professores")
-public class ProfessorController {
+@RequestMapping(value = "/api/escola/disciplinas")
+public class DisciplinaController {
     @Autowired
-    ProfessorService service;
+    DisciplinaService service;
 
     @GetMapping
-    public ResponseEntity<List<Professor>> findAll(){
+    public ResponseEntity<List<Disciplina>> findAll(){
         return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Professor>> findById(@PathVariable Integer id) {
+    public ResponseEntity<Optional<Disciplina>> findById(@PathVariable Integer id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Professor> create(@RequestBody Professor obj) {
+    public ResponseEntity<Disciplina> create(@RequestBody Disciplina obj) {
         return ResponseEntity.ok().body(service.create(obj));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Professor> update(@PathVariable Integer id, @RequestBody Professor obj) {
+    public ResponseEntity<Disciplina> update(@PathVariable Integer id, @RequestBody Disciplina obj) {
         return ResponseEntity.ok().body(service.update(id, obj));
     }
 

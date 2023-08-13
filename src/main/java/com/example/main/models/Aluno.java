@@ -25,12 +25,10 @@ public class Aluno implements Serializable {
     private Date dataMatricula;
     @Column(name = "alunoespecial", nullable = false)
     private Boolean isEspecial;
-    
+
     @OneToOne
-    @JoinColumn(name = "codigoPessoa", nullable = false)
+    @JoinColumn(name = "fk_codigoPessoa", nullable = false)
     private Pessoa pessoa;
-    
-    
 
     public Aluno() {
     }
@@ -112,7 +110,5 @@ public class Aluno implements Serializable {
         return "Aluno [codigoAluno=" + codigoAluno + ", numeroMatricula=" + numeroMatricula + ", dataMatricula="
                 + dataMatricula + ", isEspecial=" + isEspecial + "]";
     }
-    
-    
 
 }
