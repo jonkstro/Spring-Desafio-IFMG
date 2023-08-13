@@ -20,11 +20,11 @@ public class Ministrante implements Serializable {
     private Integer codigoMinistrante;
 
     @OneToOne
-    @JoinColumn(name = "fk_codigoProfessor")
+    @JoinColumn(name = "fk_codigoProfessor", nullable = false)
     private Professor professor;
 
     @OneToOne
-    @JoinColumn(name = "fk_codigoDisciplina")
+    @JoinColumn(name = "fk_codigoDisciplina", nullable = false)
     private Disciplina disciplina;
 
     public Ministrante() {
