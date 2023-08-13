@@ -27,7 +27,7 @@ public class Aluno implements Serializable {
     private Boolean isEspecial;
     
     @OneToOne
-    @JoinColumn(name = "codigoPessoa", nullable = false, referencedColumnName = "codigoPessoa")
+    @JoinColumn(name = "codigoPessoa", nullable = false)
     private Pessoa pessoa;
     
     

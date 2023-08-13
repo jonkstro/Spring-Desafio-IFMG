@@ -36,6 +36,10 @@ public class Pessoa implements Serializable {
     @OneToOne(mappedBy = "pessoa")
     private Aluno aluno;
 
+    @JsonIgnore
+    @OneToOne(mappedBy = "pessoa")
+    private Professor professor;
+
     public Pessoa() {
     }
 
@@ -103,6 +107,14 @@ public class Pessoa implements Serializable {
 
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     @Override
